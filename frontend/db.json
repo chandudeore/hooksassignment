@@ -1,3 +1,17 @@
 {
-    "todos":[]
+  "todos": [
+    {
+      "title": "New Task",
+      "description": "A transformation in Education ",
+      "subtasks": [],
+      "status": "InProgress",
+      "tags": {
+        "official": false,
+        "personal": true,
+        "others": true
+      },
+      "date": "2022-05-03",
+      "id": 1
+    }
+  ]
 }

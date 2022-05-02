@@ -1,5 +1,7 @@
 import React, { useReducer, useState } from "react";
 import { v4 as uuid } from "uuid";
+import { getTodosData } from "../Redux/Todos/action";
+import { useDispatch } from "react-redux";
 
 const initialState = {
   title: "",
@@ -29,6 +31,12 @@ const reducer = (state, { type, payload }) => {
         ele.id === payload.id ? { ...ele, subtaskStatus: payload.status } : ele
       );
       return { ...state, subtasks: subtasksAfterToggle };
+    case "DELETE_SUBTASK":
+      const subtaskAfterDelete = state.subtasks.filter(
+        (el) => el.id != payload
+      );
+
+      return { ...state, subtasks: subtaskAfterDelete };
     default:
       throw new Error("Please give proper action object");
   }
@@ -37,7 +45,20 @@ const reducer = (state, { type, payload }) => {
 export const TodoCreate = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const reduxDispatch = useDispatch();
+
   const [sub, setSub] = useState("");
+
+  const createNewTask = () => {
+    const payload = {
+      ...state,
+    };
+    fetch("http://localhost:3001/todos", {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: { "Content-Type": "application/json" },
+    }).then(() => reduxDispatch(getTodosData));
+  };
 
   const { title, description, subtasks, status, tags, date } = state;
 
@@ -182,18 +203,26 @@ export const TodoCreate = () => {
                 <input
                   type="checkbox"
                   checked={el.subtaskStatus}
-                  onChange={(el) =>
+                  onChange={(e) =>
                     dispatch({
                       type: "TOGGLE_SUBTASKS",
-                      payload: { id: el.id, status: el.target.checked },
+                      payload: { id: el.id, status: e.target.checked },
                     })
                   }
                 />
                 {el.subtasksTitle}
               </label>
+              <button
+                onClick={() =>
+                  dispatch({ type: "DELETE_SUBTASK", payload: el.id })
+                }
+              >
+                Delete Subtask
+              </button>
             </div>
           ))}
         </div>
+        <button onClick={createNewTask}>Create Task</button>
       </div>
     </>
   );
