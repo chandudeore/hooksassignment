@@ -12,6 +12,105 @@
       },
       "date": "2022-05-03",
       "id": 1
+    },
+    {
+      "title": "Learn Redux",
+      "description": "A transformation in education",
+      "date": "2022-05-05",
+      "tags": {
+        "official": true,
+        "personal": true,
+        "others": true
+      },
+      "subtasks": [
+        {
+          "id": "537517bd-2376-4d4a-a9ab-333ecde3edc1",
+          "subtasksTitle": "Learn Redux",
+          "subtaskStatus": false
+        }
+      ],
+      "status": "Done",
+      "id": 2
+    },
+    {
+      "title": "gfg",
+      "description": "fsdfa",
+      "subtasks": [],
+      "status": "InProgress",
+      "tags": {
+        "official": false,
+        "personal": true,
+        "others": false
+      },
+      "date": "2022-05-12",
+      "id": 3
+    },
+    {
+      "title": "Task 2",
+      "description": "A transtransformation in education",
+      "date": "2022-05-06",
+      "tags": {
+        "official": false,
+        "personal": true,
+        "others": false
+      },
+      "subtasks": [
+        {
+          "id": "37f9acc1-b315-42d8-805c-991ba46d21ad",
+          "subtasksTitle": "Learn Redux",
+          "subtaskStatus": false
+        }
+      ],
+      "status": "Done",
+      "id": 4
+    },
+    {
+      "title": "Task-3",
+      "description": "Learn html,css,js",
+      "date": "2022-05-13",
+      "tags": {
+        "official": true,
+        "personal": true,
+        "others": true
+      },
+      "subtasks": [
+        {
+          "id": "5f5d30d1-48dd-4095-978a-fdbdb0315716",
+          "subtasksTitle": "Learn HTML",
+          "subtaskStatus": false
+        },
+        {
+          "id": "9eafff6d-3a1f-4c68-b74c-c4724bc9ca2a",
+          "subtasksTitle": "Learn CSS",
+          "subtaskStatus": false
+        },
+        {
+          "id": "a8776d7a-c9fc-4f6a-90f1-a3b4dd91f01b",
+          "subtasksTitle": "Learn JS",
+          "subtaskStatus": false
+        }
+      ],
+      "status": "Todo",
+      "id": 5
+    },
+    {
+      "title": "Task-4",
+      "description": "task",
+      "date": "2022-05-06",
+      "tags": {
+        "official": true,
+        "personal": false,
+        "others": false
+      },
+      "subtasks": [
+        {
+          "id": "ccf3e98e-4692-4bd6-bd07-434db1f756bb",
+          "subtasksTitle": "Learn New Things",
+          "subtaskStatus": true
+        }
+      ],
+      "status": "Todo",
+      "id": 6
     }
   ]
 }

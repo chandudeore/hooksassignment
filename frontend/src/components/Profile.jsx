@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+
+const ProfileCard = styled.div`
+  padding: 25px;
+`;
 
 export const Profile = ({ username, token }) => {
   const [profile, setProfile] = useState({});
@@ -17,11 +22,11 @@ export const Profile = ({ username, token }) => {
   }, []);
   //console.log(profile);
   return (
-    <div>
+    <ProfileCard>
       <h1>Profile Details</h1>
       <p>Name: {profile.name}</p>
       <p>Email: {profile.email}</p>
       <p>Username: {profile.username}</p>
-    </div>
+    </ProfileCard>
   );
 };

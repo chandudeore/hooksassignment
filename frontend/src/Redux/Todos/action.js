@@ -19,6 +19,6 @@ export const getTodosData = () => (dispatch) => {
   dispatch(getTodosLoading());
   fetch("http://localhost:3001/todos")
     .then((res) => res.json())
-    .then((res) => dispatch(getTodos()))
+    .then((res) => dispatch(getTodos(res)))
     .catch((err) => dispatch(getTodosError()));
 };

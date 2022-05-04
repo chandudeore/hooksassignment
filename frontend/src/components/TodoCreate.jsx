@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from "react";
+import { useDispatch } from "react-redux";
 import { v4 as uuid } from "uuid";
 import { getTodosData } from "../Redux/Todos/action";
-import { useDispatch } from "react-redux";
 
 const initialState = {
   title: "",
@@ -33,10 +33,12 @@ const reducer = (state, { type, payload }) => {
       return { ...state, subtasks: subtasksAfterToggle };
     case "DELETE_SUBTASK":
       const subtaskAfterDelete = state.subtasks.filter(
-        (el) => el.id != payload
+        (el) => el.id !== payload
       );
 
       return { ...state, subtasks: subtaskAfterDelete };
+    case "RESET":
+      return { ...initialState };
     default:
       throw new Error("Please give proper action object");
   }
@@ -45,6 +47,7 @@ const reducer = (state, { type, payload }) => {
 export const TodoCreate = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  //const reduxDispatch = useDispatch();
   const reduxDispatch = useDispatch();
 
   const [sub, setSub] = useState("");
@@ -57,7 +60,9 @@ export const TodoCreate = () => {
       method: "POST",
       body: JSON.stringify(payload),
       headers: { "Content-Type": "application/json" },
-    }).then(() => reduxDispatch(getTodosData));
+    })
+      .then(() => reduxDispatch(getTodosData()))
+      .then(() => dispatch({ type: "RESET" }));
   };
 
   const { title, description, subtasks, status, tags, date } = state;
@@ -192,6 +197,7 @@ export const TodoCreate = () => {
             };
 
             dispatch({ type: "UPDATE_SUBTASKS", payload });
+            setSub("");
           }}
         >
           Add Subtask

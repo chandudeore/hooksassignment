@@ -5,6 +5,7 @@ import { Login } from "./components/Login";
 import { TodoCreate } from "./components/TodoCreate";
 import { Navigate } from "react-router";
 import { useSelector } from "react-redux";
+import { Box } from "@chakra-ui/react";
 
 const PrivateRoute = ({ isAuthenticated, children }) => {
   return isAuthenticated ? children : <Navigate to={"/login"}></Navigate>;
@@ -15,11 +16,17 @@ function App() {
   return (
     <div className="App">
       <div>
-        <div>
-          <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/todos-create">Todos</Link>
-        </div>
+        <Box bg="#AB46D2" w="100%" p={4} color="white" display="flex" gap="5">
+          <Box as="button" bg="#FF6FB5" borderRadius="md" px={4} h={8}>
+            <Link to="/">Home</Link>
+          </Box>
+          <Box as="button" bg="#FF6FB5" borderRadius="md" px={4} h={8}>
+            <Link to="/login">Login</Link>
+          </Box>
+          <Box as="button" bg="#FF6FB5" borderRadius="md" px={4} h={8}>
+            <Link to="/todos-create">Todos</Link>
+          </Box>
+        </Box>
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route
