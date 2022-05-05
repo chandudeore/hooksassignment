@@ -52,8 +52,8 @@ export const Login = () => {
             type="text"
             placeholder="Enter Password"
             value={password}
-            required
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <br />
           <br />
